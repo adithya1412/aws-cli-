@@ -1,0 +1,135 @@
+
+**launching an instance 
+;aws ec2 run-instances --image-id ami-xxxxxxxx --count 1 --instance-type t2.micro --key-name MyKeyPair --security-group-ids sg-903004f8 --subnet-id subnet-6e7f829e
+
+**Running instances : aws ec2 run-instances --image-id ami-xxxxxxxx --count 1 --instance-type t2.micro --key-name MyKeyPair --security-group-ids sg-903004f8 --subnet-id subnet-6e7f829e
+AWS CLI : install kubectl
+
+**INSTALL KUBECTL commands
+curl -o kubectl <<<https://amazon-eks.s3.us-west-2.amazonaws.com/1.20.4/2021-04-12/bin/linux/amd64/kubectl>>> for this instance 
+
+chmod=x ./kubectl 
+
+mkdir -p $HOME/bin 
+
+cp ./kubectl $HOME/bin/kubectl
+
+export PATH=$HOME/BIN/kubectl
+
+echo 'export PATH=$HOME/bin:$PATH'>>~/.bashrc
+
+source$HOME/bashrc 
+
+kubectl version--short--client
+
+**CD KUBERNETES FOLDER AND CREATE A NAMESPACE 
+    kubectl apply -f namespace.yaml
+
+**VERIFY THE NAMESPACE 
+
+kubectl get ns
+
+
+**to show the runing kubernetes 
+ls -lrta 
+
+vim namespace.yaml 
+
+
+kubectl apply -f namespace.yaml 
+
+**all the applications will bw present in this imaginary space 
+
+vim configmap.yaml
+cat configmap.yaml
+
+database url from the docker will be configures to the configmap
+
+**creating a config map 
+
+**CREATE SECRETS
+
+kubectl apply -f secret.yaml
+
+TO CHECK WHAT SECRETS CAN WE STORE 
+   cat secrets.yaml
+
+opaque : used to store password 
+
+kubectl apply -f secret.yaml
+cat persistent-volume
+
+
+**CREATE PERSISTANT VOLUME
+kubernet apply -f persistent-volume.yaml
+
+**CHECK FOR VARIOUS API RESOURCES IN KUBERNETES if any use in that case 
+
+
+**CREATE THE PERSISTANT VOLUME CLAIM 
+kubernet apply -f persistent-volumeclaim.yaml
+
+**CREATE THE WEB DEPLOYEMENT 
+kubectl apply -f db-deployement.yaml
+
+**CREATE THE SERVICE FOR WEB abd DB
+
+
+
+cat ls -lrta
+
+cat web-deployement enter
+
+
+kubectl apply -f db-deployment.yaml 
+
+kubectl apply -fweb-service.yaml
+kubectl apply -f db-service.yaml
+
+
+**CHECKING ALL THE DATA 
+
+kubectl get cm
+kubectl get pods 
+kubectl get svc
+kubectl get pods -n my-app 
+
+
+kubectl get cm
+
+
+to check the pods running 
+
+kubectl get pods -n my-app
+
+check logs for errors 
+kubectl logs web-deployment-dc469f978-wcqqf-n my-app
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
